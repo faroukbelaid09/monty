@@ -22,19 +22,19 @@ int main(int argc, char *argv[])
 
 /**
  * createCustomNode - Creates a custom node.
- * @numValue: Number to go inside custom node.
+ * @n: Number to go inside custom node.
  * Return: Pointer to the custom node. Otherwise NULL.
  */
-stack_t *createCustomNode(int numValue)
+stack_t *createCustomNode(int n)
 {
-	stack_t *custom_node;
+	stack_t *customNode;
 
 	customNode = malloc(sizeof(stack_t));
 	if (customNode == NULL)
-		err(4);
+		errorHandling(4);
 	customNode->next = NULL;
 	customNode->prev = NULL;
-	customNode->numValue = numValue;
+	customNode->n = n;
 	return (customNode);
 }
 

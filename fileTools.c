@@ -9,8 +9,8 @@ void openFile(char *fileName)
 {
 	FILE *fileDescriptor = fopen(fileName, "r");
 
-	if (fileName == NULL || fd == NULL)
-		err(2, fileName);
+	if (fileName == NULL || fileDescriptor == NULL)
+		errorHandling(2, fileName);
 
 	readFile(fileDescriptor);
 	fclose(fileDescriptor);
@@ -49,7 +49,7 @@ int parseLn(char *buf, int lineNum, int form)
 	const char *delim = "\n ";
 
 	if (buf == NULL)
-		err(4);
+		errorHandling(4);
 
 	opcode = strtok(buf, delim);
 	if (opcode == NULL)
@@ -79,13 +79,13 @@ void findFunction(char *opcode, char *val, int lineNum, int form)
 	int flag;
 
 	instruction_t listOfFunctions[] = {
-		{"push", add_to_stack},
-		{"pall", print_stack},
-		{"pint", print_top},
-		{"pop", pop_top},
-		{"nop", nop},
-		{"swap", swap_nodes},
-		{"add", add_nodes},
+		{"push", addToStack},
+		{"pall", printStack},
+		{"pint", printTop},
+		{"pop", popTop},
+		{"nop", empty},
+		{"swap", swapNodes},
+		{"add", addNodes},
 		{NULL, NULL}
 	};
 
@@ -101,7 +101,7 @@ void findFunction(char *opcode, char *val, int lineNum, int form)
 		}
 	}
 	if (flag == 1)
-		err(3, lineNum, opcode);
+		errorHandling(3, lineNum, opcode);
 }
 
 /**
@@ -127,11 +127,11 @@ void callFunction(op_func func, char *opcodeString, char *val, int lineNum, int 
 			flag = -1;
 		}
 		if (val == NULL)
-			err(5, lineNum);
+			errorHandling(5, lineNum);
 		for (itr = 0; val[itr] != '\0'; itr++)
 		{
 			if (isdigit(val[itr]) == 0)
-				err(5, lineNum);
+				errorHandling(5, lineNum);
 		}
 		node = createCustomNode(atoi(val) * flag);
 		if (form == 0)
