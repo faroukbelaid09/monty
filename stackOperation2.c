@@ -50,3 +50,46 @@ void addNodes(stack_t **stack, unsigned int ln)
 	free((*stack)->prev);
 	(*stack)->prev = NULL;
 }
+
+/**
+ * subNodes - Adds the top two elements of the stack
+ * @stack: Pointer to top node of the stack.
+ * @ln: Opcode Interger
+ */
+void subNodes(stack_t **stack, unsigned int ln)
+{
+	int sum;
+
+	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+
+		errorHandling(8, ln, "sub");
+
+
+	(*stack) = (*stack)->next;
+	sum = (*stack)->n - (*stack)->prev->n;
+	(*stack)->n = sum;
+	free((*stack)->prev);
+	(*stack)->prev = NULL;
+}
+
+
+/**
+ * divNodes - Adds the top two elements of the stack
+ * @stack: Pointer to top node of the stack.
+ * @ln: Opcode Interger
+ */
+void divNodes(stack_t **stack, unsigned int ln)
+{
+	int sum;
+
+	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+		errorHandling(8, ln, "div");
+
+	if ((*stack)->n == 0)
+		errorHandling(9, ln);
+	(*stack) = (*stack)->next;
+	sum = (*stack)->n / (*stack)->prev->n;
+	(*stack)->n = sum;
+	free((*stack)->prev);
+	(*stack)->prev = NULL;
+}

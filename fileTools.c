@@ -86,6 +86,8 @@ void findFunction(char *opcode, char *val, int lineNum, int form)
 		{"nop", empty},
 		{"swap", swapNodes},
 		{"add", addNodes},
+		{"sub", subNodes},
+		{"div", divNodes},
 		{NULL, NULL}
 	};
 

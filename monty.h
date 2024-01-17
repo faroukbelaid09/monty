@@ -62,7 +62,8 @@ void empty(stack_t **stack, unsigned int linNumber);
 
 /*Math operations with nodes*/
 void addNodes(stack_t **stack, unsigned int linNumber);
-
+void subNodes(stack_t **stack, unsigned int ln);
+void divNodes(stack_t **stack, unsigned int ln);
 /*Error hanlding*/
 void errorHandling(int errCode, ...);
 
