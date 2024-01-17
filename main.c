@@ -1,5 +1,7 @@
 #include "monty.h"
 
+stack_t *head = NULL;
+
 /**
  * main - entry
  * @argc: arguments count
@@ -42,7 +44,6 @@ stack_t *createCustomNode(int n)
  */
 void clearNodes(void)
 {
-	stack_t *head = NULL;
 	stack_t *tmp;
 
 	if (head == NULL)
@@ -64,7 +65,6 @@ void clearNodes(void)
 void pushToQueue(stack_t **newNode, __attribute__((unused))unsigned int ln)
 {
 	stack_t *tmp;
-	stack_t *head = NULL;
 
 	if (newNode == NULL || *newNode == NULL)
 		exit(EXIT_FAILURE);

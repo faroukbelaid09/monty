@@ -115,7 +115,6 @@ void findFunction(char *opcode, char *val, int lineNum, int form)
 void callFunction(op_func func, char *opcodeStr, char *val, int ln, int form)
 {
 	stack_t *node;
-	stack_t *head = NULL;
 	int flag;
 	int itr;
 
