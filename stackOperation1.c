@@ -8,6 +8,7 @@
 void addToStack(stack_t **newNode, __attribute__((unused))unsigned int ln)
 {
 	stack_t *tmp;
+	stack_t *head = NULL;
 
 	if (newNode == NULL || *newNode == NULL)
 		exit(EXIT_FAILURE);

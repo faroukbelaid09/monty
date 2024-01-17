@@ -107,19 +107,20 @@ void findFunction(char *opcode, char *val, int lineNum, int form)
 /**
  * callFunction - Calls required function
  * @func: Pointer to the function that about to be called
- * @opcodeString: string representing the opcode
+ * @opcodeStr: string representing the opcode
  * @val: string representing a numeric value
- * @lineNum: line numeber
+ * @ln: line numeber
  * @form: Format specifier
  */
-void callFunction(op_func func, char *opcodeString, char *val, int lineNum, int form)
+void callFunction(op_func func, char *opcodeStr, char *val, int ln, int form)
 {
 	stack_t *node;
+	stack_t *head = NULL;
 	int flag;
 	int itr;
 
 	flag = 1;
-	if (strcmp(opcodeString, "push") == 0)
+	if (strcmp(opcodeStr, "push") == 0)
 	{
 		if (val != NULL && val[0] == '-')
 		{
@@ -127,18 +128,18 @@ void callFunction(op_func func, char *opcodeString, char *val, int lineNum, int 
 			flag = -1;
 		}
 		if (val == NULL)
-			errorHandling(5, lineNum);
+			errorHandling(5, ln);
 		for (itr = 0; val[itr] != '\0'; itr++)
 		{
 			if (isdigit(val[itr]) == 0)
-				errorHandling(5, lineNum);
+				errorHandling(5, ln);
 		}
 		node = createCustomNode(atoi(val) * flag);
 		if (form == 0)
-			func(&node, lineNum);
+			func(&node, ln);
 		if (form == 1)
-			pushToQueue(&node, lineNum);
+			pushToQueue(&node, ln);
 	}
 	else
-		func(&head, lineNum);
+		func(&head, ln);
 }

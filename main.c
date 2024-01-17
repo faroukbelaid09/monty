@@ -1,5 +1,4 @@
 #include "monty.h"
-stack_t *head = NULL;
 
 /**
  * main - entry
@@ -41,8 +40,9 @@ stack_t *createCustomNode(int n)
 /**
  * clearNodes -Free nodes in the stack
  */
-void clearNodes()
+void clearNodes(void)
 {
+	stack_t *head = NULL;
 	stack_t *tmp;
 
 	if (head == NULL)
@@ -59,11 +59,12 @@ void clearNodes()
 /**
  * pushToQueue - push a node to the queue
  * @newNode: Pointer to new node
- * @lineNumber: line number of the opcode
+ * @ln: line number of the opcode
  */
-void pushToQueue(stack_t **newNode, __attribute__((unused))unsigned int lineNumber)
+void pushToQueue(stack_t **newNode, __attribute__((unused))unsigned int ln)
 {
 	stack_t *tmp;
+	stack_t *head = NULL;
 
 	if (newNode == NULL || *newNode == NULL)
 		exit(EXIT_FAILURE);
