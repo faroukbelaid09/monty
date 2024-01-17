@@ -35,14 +35,14 @@ void swapNodes(stack_t **stack, unsigned int linNumber)
 /**
  * addNodes - Add the top two elements of the stack
  * @stack: Pointer to top node of the stack
- * @linNumber: Opcode Interger
+ * @ln: Opcode Interger
  */
-void addNodes(stack_t **stack, unsigned int linNumber)
+void addNodes(stack_t **stack, unsigned int ln)
 {
 	int sum;
 
 	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
-		errorHandling(8, linNumber, "add");
+		errorHandling(8, ln, "add");
 
 	(*stack) = (*stack)->next;
 	sum = (*stack)->n + (*stack)->prev->n;

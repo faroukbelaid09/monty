@@ -3,9 +3,9 @@
 /**
  * addToStack - Add node to stack
  * @newNode: Pointer to the new node
- * @lineNumber: Opcode Interger
+ * @ln: Opcode Interger
  */
-void addToStack(stack_t **newNode, __attribute__((unused))unsigned int lineNumber)
+void addToStack(stack_t **newNode, __attribute__((unused))unsigned int ln)
 {
 	stack_t *tmp;
 
